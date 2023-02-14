@@ -21,5 +21,10 @@
         <%= form.text_field :image_path %>
     </div>
 
+    <div>
+        <%= form.label :category_ids %>
+        <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
+    </div>
+
     <%= form.submit%>
 <% end %>

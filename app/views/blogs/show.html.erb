@@ -4,5 +4,11 @@
 <%= image_tag @blog.image_path, style: "border: 1px solid black" %>
 </div>
 
+<div>
+<% @blog.categories.each do |category|%>
+    <b style="margin-right: 6px"><%= category.name %></b>
+<% end %>
+</div>
+
 <%= link_to "Edit", edit_blog_path(@blog)%>
 <%= button_to "Destroy", @blog, method: :delete %>

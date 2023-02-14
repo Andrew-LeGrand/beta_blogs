@@ -1,6 +1,6 @@
 class Blog < ApplicationRecord
     has_and_belongs_to_many :categories
-    
+    belongs_to :user
     validates :title, presence: true, length: {minimum: 2, maximum: 200}
     validates :content, presence: true, length: {minimum: 2, maximum: 200}
 

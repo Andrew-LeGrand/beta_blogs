@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
 
         if @blog.save
             flash[:notice] = "Blog successfully saved!"
-            redirect_to blogs_path
+            redirect_to @blog
         else
             flash[:notice] = "There was an error when creating a blog"
             render :new, status: :unprocessable_entity
@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
 
     private
     def blog_params
-        params.require(:blog).permit(:title, :content, :image_path)
+        params.require(:blog).permit(:title, :content, :image_path, category_ids: [])
     end
 
     def set_blog
