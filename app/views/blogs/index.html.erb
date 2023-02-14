@@ -1,0 +1,9 @@
+<h1>Blogs</h1>
+
+<% @blogs.each do |blog| %>
+    <div>
+        <%= blog.title %>
+    </div>
+    <p><%= blog.content %></p>
+    <%= image_tag blog.image_path %>
+<% end %>

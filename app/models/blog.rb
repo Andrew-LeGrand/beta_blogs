@@ -14,7 +14,7 @@ class Blog < ApplicationRecord
             # does the response have a content type image?
             errors.add(:image_path, "does not contain image content") and return unless path.content_type.starts_with?("image")
         rescue
-            errors.add(image_path, "invalid url")
+            errors.add(:image_path, "invalid url")
         end        
     end
 end
