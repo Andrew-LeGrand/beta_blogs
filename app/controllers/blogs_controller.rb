@@ -1,4 +1,7 @@
 class BlogsController < ApplicationController
+
+    before_action :set_blog, only: [:show, :edit, :update, :destroy]
+
     # GET - show all blogs
     def index
         @blogs = Blog.all
@@ -22,8 +25,33 @@ class BlogsController < ApplicationController
         end
     end
 
+    # GET - show specific blog
+    def show        
+    end
+
+    # GET - Edit a blog
+    def edit        
+    end
+
+    def update       
+        if @blog.update(blog_params)
+            redirect_to blogs_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+    def destroy        
+        @blog.destroy
+        redirect_to blogs_path
+    end
+
     private
     def blog_params
         params.require(:blog).permit(:title, :content, :image_path)
+    end
+
+    def set_blog
+        @blog = Blog.find(params[:id])
     end
 end

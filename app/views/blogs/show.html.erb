@@ -1,0 +1,8 @@
+<h1><%= @blog.title %></h1>
+<p><%= @blog.content%></p>
+<div>
+<%= image_tag @blog.image_path, style: "border: 1px solid black" %>
+</div>
+
+<%= link_to "Edit", edit_blog_path(@blog)%>
+<%= button_to "Destroy", @blog, method: :delete %>
