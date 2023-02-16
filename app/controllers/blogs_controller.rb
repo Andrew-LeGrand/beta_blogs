@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
 
     before_action :set_blog, only: [:show, :edit, :update, :destroy]
+    before_action :require_user
 
     # GET - show all blogs
     def index
@@ -14,7 +15,7 @@ class BlogsController < ApplicationController
 
     # POST - create blog
     def create
-        @blog = Blog.new(blog_params)
+        @blog = helpers.current_user.blogs.new(blog_params)
 
         if @blog.save
             flash[:notice] = "Blog successfully saved!"
